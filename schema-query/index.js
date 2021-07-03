@@ -21,6 +21,11 @@ const typeDefs = gql`
     }
 `
 const resolvers = {
+    Usuario: {
+        salario(usuario) {
+            return usuario.salario_real;
+        }
+    },
     Query: {
         ola() {
             return "Olá mundo!";
@@ -34,7 +39,7 @@ const resolvers = {
                 nome: "João Cícero Vicente Sousa",
                 email: "joao@gmail.com",
                 idade: 26,
-                salario: 6000.00,
+                salario_real: 6000.56,
                 vip: true
             }
         }
@@ -44,8 +49,8 @@ const resolvers = {
 const server = new ApolloServer({
     typeDefs,
     resolvers
-})
+});
 
 server.listen().then(({ url }) => {
     console.log(`Executando na porta ${url}`);
-})
+});
