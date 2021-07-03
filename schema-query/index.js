@@ -5,12 +5,16 @@ const typeDefs = gql`
     # Portas de entrada da API. O sinal ! obriga o retorno(não pode ser nullo)
     type Query {
         ola:String
+        horaCerta:String
     }
 `
 const resolvers = {
     Query: {
         ola() {
             return "Olá mundo!";
+        },
+        horaCerta() {
+            return `${new Date}`
         }
     }
 }
