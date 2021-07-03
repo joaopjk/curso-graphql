@@ -2,10 +2,12 @@ const { ApolloServer, gql } = require('apollo-server');
 
 
 const typeDefs = gql` 
+    scalar Date
+
     # Portas de entrada da API. O sinal ! obriga o retorno(não pode ser nullo)
     type Query {
-        ola:String
-        horaCerta:String
+        ola: String
+        horaCerta: Date
     }
 `
 const resolvers = {
@@ -14,7 +16,7 @@ const resolvers = {
             return "Olá mundo!";
         },
         horaCerta() {
-            return `${new Date}`
+            return new Date;
         }
     }
 }
