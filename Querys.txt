@@ -1,0 +1,30 @@
+{
+       #usuario(id: 2){	
+        #nome email idade salario vip
+      #}
+    perfis{
+      id nome
+    }
+
+    perfil(id: 1){
+      id nome
+    }
+
+    usuarios {
+      id email
+      perfil{
+        nome
+      }
+    }
+  }
+
+{
+  usuario(id: 1){
+    ...usuarioCompleto
+  }
+}
+fragment usuarioCompleto on Usuario{
+  id nome email salario  vip perfil{
+    id nome 
+  }
+}
