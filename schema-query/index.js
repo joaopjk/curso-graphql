@@ -15,15 +15,14 @@ const usuarios = [{
     idade: 300,
     salario_real: 6000.56,
     vip: true
-},{
+}, {
     id: 3,
     nome: "João Cícero Vicente Sousa",
     email: "joao@gmail.com",
     idade: 26,
     salario_real: 6000.56,
     vip: true
-}
-]
+}]
 
 const typeDefs = gql` 
     scalar Date
@@ -51,6 +50,7 @@ const typeDefs = gql`
         horaCerta: Date
         usuarioLogado: Usuario
         usuarios: [Usuario]!
+        usuario(id:ID): Usuario
         produtoEmDestaque: Produto
         numerosMegaSena: [Int!]!
     }
@@ -97,8 +97,12 @@ const resolvers = {
                 .map(n => parseInt(Math.random() * 60 + 1))
                 .sort(crescente);
         },
-        usuarios(){
+        usuarios() {
             return usuarios;
+        },
+        usuario(_, { id }) {
+            const selecionados = usuarios.filter(x => x.id == id);
+            return selecionados ? selecionados[0] : null;
         }
     }
 }
