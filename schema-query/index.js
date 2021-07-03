@@ -14,7 +14,7 @@ const typeDefs = gql`
     }
 
     type Produto {
-        id: Int
+        id: ID!
         nome: String!
         preco: String!
         desconto: Float
@@ -27,6 +27,7 @@ const typeDefs = gql`
         horaCerta: Date
         usuarioLogado: Usuario
         produtoEmDestaque: Produto
+        numerosMegaSena: [Int!]!
     }
 `
 const resolvers = {
@@ -37,7 +38,7 @@ const resolvers = {
     },
     Produto: {
         precoComDesconto(produto) {
-            return produto.preco - produto.desconto;
+            return produto.preco - (produto.desconto * produto.preco);
         }
     },
     Query: {
@@ -62,8 +63,15 @@ const resolvers = {
                 id: 1,
                 nome: "Nootbook",
                 preco: 4000.10,
-                desconto: 100
+                desconto: 0.15
             }
+        },
+        numerosMegaSena() {
+            //return [1, 2, 44, 5, 66, 1];
+            const crescente = (a, b) => a - b;
+            return Array(6).fill(0)
+                .map(n => parseInt(Math.random() * 60 + 1))
+                .sort(crescente);
         }
     }
 }
