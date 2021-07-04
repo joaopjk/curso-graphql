@@ -1,0 +1,12 @@
+# Portas de entrada da API. O sinal ! obriga o retorno(não pode ser nullo)
+type Query {
+    ola: String
+    horaCerta: Date
+    usuarioLogado: Usuario
+    usuarios: [Usuario]!
+    usuario(id:ID): Usuario
+    produtoEmDestaque: Produto
+    numerosMegaSena: [Int!]!
+    perfil(id: Int): Perfil
+    perfis: [Perfil]
+}

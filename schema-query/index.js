@@ -1,5 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
-
+const {importSchema} = require('graphql-import');
 
 const usuarios = [{
     id: 1,
@@ -38,45 +38,6 @@ const perfis = [{
     nome: 'Senior'
 }]
 
-const typeDefs = gql` 
-    scalar Date
-
-    type Usuario {
-        id: ID!
-        nome: String!
-        email: String!
-        idade: Int
-        salario: Float
-        vip: Boolean
-        perfil: Perfil
-    }
-
-    type Produto {
-        id: ID!
-        nome: String!
-        preco: String!
-        desconto: Float
-        precoComDesconto: Float
-    }
-
-    type Perfil{
-        id: ID!
-        nome: String!
-    }
-
-    # Portas de entrada da API. O sinal ! obriga o retorno(não pode ser nullo)
-    type Query {
-        ola: String
-        horaCerta: Date
-        usuarioLogado: Usuario
-        usuarios: [Usuario]!
-        usuario(id:ID): Usuario
-        produtoEmDestaque: Produto
-        numerosMegaSena: [Int!]!
-        perfil(id: Int): Perfil
-        perfis: [Perfil]
-    }
-`
 const resolvers = {
     Usuario: {
         salario(usuario) {
@@ -141,7 +102,7 @@ const resolvers = {
 }
 
 const server = new ApolloServer({
-    typeDefs,
+    typeDefs: importSchema('./schema/index.graphql'),
     resolvers
 });
 
