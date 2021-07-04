@@ -5,7 +5,8 @@ const usuarios = [{
     idade: 26,
     salario_real: 6000.56,
     vip: true,
-    perfil_id: 1
+    perfil_id: 1,
+    status: "ATIVO"
 }, {
     id: 2,
     nome: "Franci Iara Sousa",
@@ -13,7 +14,8 @@ const usuarios = [{
     idade: 300,
     salario_real: 6000.56,
     vip: true,
-    perfil_id: 3
+    perfil_id: 3,
+    status:"INATIVO"
 }, {
     id: 3,
     nome: "João Cícero Vicente Sousa",
@@ -21,7 +23,8 @@ const usuarios = [{
     idade: 26,
     salario_real: 6000.56,
     vip: true,
-    perfil_id: 2
+    perfil_id: 2,
+    status: "BLOQUEADO"
 }]
 
 const perfis = [{
