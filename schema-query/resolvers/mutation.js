@@ -8,7 +8,7 @@ function indiceUsuario(filtro) {
         return usuarios.findIndex(u => u.id === id);
     if (email)
         return usuarios.findIndex(u => u.email === email);
-    
+
     return -1;
 }
 
@@ -31,7 +31,7 @@ module.exports = {
         return novo;
     },
 
-    excluirUsuario(_, { filtro}) {
+    excluirUsuario(_, { filtro }) {
         const i = indiceUsuario(filtro);
 
         if (i < 0) return null;
