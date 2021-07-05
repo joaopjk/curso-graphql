@@ -22,3 +22,9 @@ type Perfil{
     nome: String!
 }
 
+input UsuarioInput{
+    nome:String
+    email:String
+    idade:Int
+}
+
